@@ -1,9 +1,12 @@
 import express from "express";
-import { DbConnect } from "./config/database";
+import dotenv from "dotenv"
+import { router } from "./routes";
 
 const server = express();
+dotenv.config()
 
 server.use(express.json());
+server.use(router);
 
 server.get("/", (req, res) => {
   try {
@@ -12,7 +15,5 @@ server.get("/", (req, res) => {
     console.log(error);
   }
 });
-
-DbConnect();
 
 export { server };
