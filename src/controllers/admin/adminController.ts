@@ -1,34 +1,39 @@
 import { Request, Response, Router } from "express";
 import { registerAdmin, login } from "../../services/admin/adminService";
 import { hashPassword } from "../../utils/hashPassword";
+import {
+  adminLoginSchema,
+  adminLoginType,
+  adminSignUpSchema,
+} from "../../validations/admin.validation";
 
 export const adminController = Router();
 
 adminController.post("/register", async (req: Request, res: Response) => {
   try {
     let { Full_Name, email, password } = req.body;
+    adminSignUpSchema.parse(req.body);
     const hash = await hashPassword(password);
     req.body.password = hash;
-    console.log("hashed password is", hash);
-    let data = req.body;
+    const data = req.body;
     const register = await registerAdmin(data);
     return res.send({ msg: register });
   } catch (error) {
-    console.log(error);
+    console.log("the error from registering admin is", error);
   }
 });
 
 adminController.post("/login", async (req: Request, res: Response) => {
   try {
     let { email, password } = req.body;
-    const loginData = { email, password };
+    adminLoginSchema.parse(req.body);
+    const loginData: adminLoginType = { email, password };
     const token = await login(loginData);
-    console.log("token is ", token);
     res.cookie("token", token, {
       httpOnly: true,
     });
     res.send({ token: token, msg: "login successful" });
   } catch (error) {
-    console.log(error);
+    console.log("the error from admin login is", error);
   }
 });

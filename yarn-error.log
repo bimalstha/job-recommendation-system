@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/bin/node /usr/bin/yarn add dotenv
+  /usr/bin/node /usr/bin/yarn add zod
 
 PATH: 
   /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin
@@ -29,6 +29,7 @@ npm manifest:
       "@types/pg": "^8.10.1",
       "argon2": "^0.30.3",
       "class-validator": "^0.14.0",
+      "dotenv": "^16.1.4",
       "express": "^4.18.2",
       "jsonwebtoken": "^9.0.0",
       "nodemon": "^2.0.22",
@@ -581,6 +582,11 @@ Lockfile:
     version "16.0.3"
     resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-16.0.3.tgz#115aec42bac5053db3c456db30cc243a5a836a07"
     integrity sha512-7GO6HghkA5fYG9TYnNxi14/7K9f5occMlp3zXAuSxn7CKCxt9xbNWG7yF8hTCSUchlfWSe3uLmlPfigevRItzQ==
+  
+  dotenv@^16.1.4:
+    version "16.1.4"
+    resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-16.1.4.tgz#67ac1a10cd9c25f5ba604e4e08bc77c0ebe0ca8c"
+    integrity sha512-m55RtE8AsPeJBpOIFKihEmqUcoVncQIwo7x9U8ZwLEZw9ZpXboz2c+rvog+jUaJvVrZ5kBOeYQBX5+8Aa/OZQw==
   
   ecdsa-sig-formatter@1.0.11:
     version "1.0.11"

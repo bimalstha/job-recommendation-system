@@ -3,10 +3,14 @@ import jwt from "jsonwebtoken";
 import { AppDataSource } from "../../config/database";
 import { Admin, adminRole } from "../../entities/admin.entity";
 import { verifyPassword } from "../../utils/hashPassword";
+import {
+  adminLoginType,
+  adminSignUpType,
+} from "../../validations/admin.validation";
 
 const adminRepository = AppDataSource.getRepository(Admin);
 
-export const registerAdmin = async (data) => {
+export const registerAdmin = async (data: adminSignUpType) => {
   try {
     //only one super admin is allowed
     const findRole = await adminRepository.find({
@@ -17,23 +21,21 @@ export const registerAdmin = async (data) => {
     if (findRole.length && data.role === "Super Admin") {
       return { msg: "admin with role:super admin, already exits" };
     }
-    const create = adminRepository.create(data as Admin);
-    await adminRepository.save(create);
+    const createAdmin = adminRepository.create(data as Admin);
+    await adminRepository.save(createAdmin);
     return { msg: "admin created" };
   } catch (error) {
-    console.log(error);
+    console.log("this error is from admin registering service", error);
   }
 };
 
-export const login = async (data) => {
+export const login = async (data: adminLoginType) => {
   try {
     const findAdmin = await adminRepository.findOne({
       where: {
         email: data.email,
       },
     });
-    console.log("the data is ", data);
-    console.log("the find admin is", findAdmin.password);
     if (!findAdmin) {
       throw { msg: "user do not exits" };
     }
@@ -47,7 +49,6 @@ export const login = async (data) => {
     const token = jwt.sign({ id: findAdmin.id }, process.env.SECRETKEY_JWT, {
       expiresIn: "24h",
     });
-    console.log("the token is", token);
     return token;
   } catch (error) {
     console.log("the error in login is " + error);
