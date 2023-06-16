@@ -1,4 +1,10 @@
-import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  CreateDateColumn,
+  UpdateDateColumn,
+} from "typeorm";
 import { IsEmail } from "class-validator";
 
 export enum adminRole {
@@ -15,7 +21,7 @@ export class Admin {
   Full_Name: string;
 
   @Column({ unique: true })
-  @IsEmail({}, { message: 'Please provide a valid email address.' })
+  @IsEmail({}, { message: "Please provide a valid email address." })
   email: string;
 
   @Column()
@@ -27,4 +33,10 @@ export class Admin {
     default: adminRole.MA,
   })
   role: adminRole;
+
+  @CreateDateColumn()
+  createdDate: Date;
+
+  @UpdateDateColumn()
+  updatedDate: Date;
 }

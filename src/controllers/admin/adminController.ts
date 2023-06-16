@@ -1,5 +1,5 @@
 import { Request, Response, Router } from "express";
-import { registerAdmin, login } from "../../services/admin/adminService";
+import { registerAdmin, loginAdmin } from "../../services/admin/adminService";
 import { hashPassword } from "../../utils/hashPassword";
 import {
   adminLoginSchema,
@@ -28,7 +28,7 @@ adminController.post("/login", async (req: Request, res: Response) => {
     let { email, password } = req.body;
     adminLoginSchema.parse(req.body);
     const loginData: adminLoginType = { email, password };
-    const token = await login(loginData);
+    const token = await loginAdmin(loginData);
     res.cookie("token", token, {
       httpOnly: true,
     });

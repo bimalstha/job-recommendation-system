@@ -29,7 +29,7 @@ export const registerAdmin = async (data: adminSignUpType) => {
   }
 };
 
-export const login = async (data: adminLoginType) => {
+export const loginAdmin = async (data: adminLoginType) => {
   try {
     const findAdmin = await adminRepository.findOne({
       where: {
@@ -55,4 +55,4 @@ export const login = async (data: adminLoginType) => {
   }
 };
 
-export default { registerAdmin, login };
+export default { registerAdmin, loginAdmin };
