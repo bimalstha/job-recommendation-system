@@ -1,6 +1,6 @@
 import { AppDataSource } from "../../config/database";
 import { Vacancy } from "../../entities/vacancy.entity";
-import { vacancyDataType } from "../../validations/dataValidation";
+import { vacancyDataType } from "../../validations/vacancyData";
 
 const vacancyRepository = AppDataSource.getRepository(Vacancy);
 

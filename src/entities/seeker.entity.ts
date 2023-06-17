@@ -29,13 +29,16 @@ export class Seeker {
   education_Level: string;
 
   @Column()
-  Expertise: string;
+  expertise: string;
 
   @Column()
   experience: number;
 
   @Column()
   about_me: string;
+
+  @Column({default:"not uploaded"})
+  profile_photo: string;
 
   @Column()
   C_V: string;
@@ -49,3 +52,4 @@ export class Seeker {
   @OneToMany(() => Application, (application) => application.seeker)
   applications: Application[];
 }
+

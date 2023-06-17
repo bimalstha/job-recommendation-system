@@ -15,16 +15,7 @@ export const adminLoginSchema = z.object({
 });
 
 
-export const vacancySchema = z.object({
-  title: z.string().min(3),
-  description: z.string(),
-  location: z.string(),
-  id: z.string().uuid()
-});
-
-
 type adminSignUpType = z.infer<typeof adminSignUpSchema>;
 type adminLoginType = z.infer<typeof adminLoginSchema>;
-type vacancyDataType = z.infer<typeof vacancySchema>;
 
-export { adminSignUpType, adminLoginType, vacancyDataType };
+export { adminSignUpType, adminLoginType };

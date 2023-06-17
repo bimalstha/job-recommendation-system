@@ -5,7 +5,7 @@ import {
   adminLoginSchema,
   adminLoginType,
   adminSignUpSchema,
-} from "../../validations/dataValidation";
+} from "../../validations/adminData";
 
 export const adminController = Router();
 
@@ -23,7 +23,7 @@ adminController.post("/register", async (req: Request, res: Response) => {
   }
 });
 
-adminController.post("/login", async (req: Request, res: Response) => {
+adminController.post("/login-as-admin", async (req: Request, res: Response) => {
   try {
     let { email, password } = req.body;
     adminLoginSchema.parse(req.body);

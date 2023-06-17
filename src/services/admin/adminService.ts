@@ -3,10 +3,7 @@ import jwt from "jsonwebtoken";
 import { AppDataSource } from "../../config/database";
 import { Admin, adminRole } from "../../entities/admin.entity";
 import { verifyPassword } from "../../utils/hashPassword";
-import {
-  adminLoginType,
-  adminSignUpType,
-} from "../../validations/dataValidation";
+import { adminLoginType, adminSignUpType } from "../../validations/adminData";
 
 const adminRepository = AppDataSource.getRepository(Admin);
 

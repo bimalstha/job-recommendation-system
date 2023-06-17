@@ -1,11 +1,14 @@
-import { Router } from "express";
+import { Request, Response, Router } from "express";
 
 const jobApplicationController = Router();
 
-jobApplicationController.post("/apply_job/:id", (req, res) => {
-  try {
-    const id= req.params.id;
-  } catch (error) {
-    console.log("the error from posting job application is", error);
+jobApplicationController.post(
+  "/apply_job/:id",
+  async (req: Request, res: Response) => {
+    try {
+      const id = req.params.id;
+    } catch (error) {
+      console.log("the error from posting job application is", error);
+    }
   }
-});
+);
