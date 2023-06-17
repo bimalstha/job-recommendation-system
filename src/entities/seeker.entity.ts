@@ -1,4 +1,11 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  OneToMany,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from "typeorm";
 import { Application } from "./application.entity";
 
 @Entity()
@@ -7,32 +14,38 @@ export class Seeker {
   id: string;
 
   @Column()
-  Full_Name: string;
+  full_name: string;
 
   @Column({ unique: true })
-  Email: string;
+  email: string;
 
   @Column()
-  Contact: string;
+  contact: string;
 
   @Column()
-  Address: string;
+  address: string;
 
   @Column()
-  Education_Level: string;
+  education_Level: string;
 
   @Column()
   Expertise: string;
 
   @Column()
-  Experience: number;
+  experience: number;
 
   @Column()
-  About_me: string;
+  about_me: string;
 
   @Column()
   C_V: string;
 
-  @OneToMany(()=>Application,(application)=>application.seeker)
-  application: Application[]
+  @CreateDateColumn()
+  createdDate: Date;
+
+  @UpdateDateColumn()
+  updatedDate: Date;
+
+  @OneToMany(() => Application, (application) => application.seeker)
+  applications: Application[];
 }

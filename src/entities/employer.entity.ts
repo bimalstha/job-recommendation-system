@@ -1,4 +1,11 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  OneToMany,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from "typeorm";
 import { Vacancy } from "./vacancy.entity";
 
 @Entity()
@@ -7,20 +14,26 @@ export class Employer {
   id: string;
 
   @Column()
-  Company_Name: string;
+  company_name: string;
 
   @Column({ unique: true })
   email: string;
 
   @Column()
-  Location: string;
+  location: string;
 
   @Column()
-  Contact: string;
+  contact: string;
 
   @Column()
-  Description: string;
+  description: string;
+
+  @CreateDateColumn()
+  createdDate: Date;
+
+  @UpdateDateColumn()
+  updatedDate: Date;
 
   @OneToMany(() => Vacancy, (vacancy) => vacancy.employer)
-  vacancy: Vacancy[];
+  vacancies: Vacancy[];
 }

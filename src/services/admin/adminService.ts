@@ -6,7 +6,7 @@ import { verifyPassword } from "../../utils/hashPassword";
 import {
   adminLoginType,
   adminSignUpType,
-} from "../../validations/admin.validation";
+} from "../../validations/dataValidation";
 
 const adminRepository = AppDataSource.getRepository(Admin);
 

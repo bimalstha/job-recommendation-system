@@ -1,4 +1,11 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from "typeorm";
 import { Employer } from "./employer.entity";
 
 @Entity()
@@ -10,15 +17,20 @@ export class Vacancy {
   title: string;
 
   @Column()
-  Location: string;
+  description: string;
 
   @Column()
-  Description: string;
+  location: string;
 
   @Column({ default: false })
-  Admin_status: boolean;
+  admin_status: boolean;
 
-  @ManyToOne(()=>Employer, (employer)=>employer.vacancy)
-  employer: Employer
+  @CreateDateColumn()
+  createdDate: Date;
 
+  @UpdateDateColumn()
+  updatedDate: Date;
+
+  @ManyToOne(() => Employer, (employer) => employer.vacancies)
+  employer: Employer;
 }

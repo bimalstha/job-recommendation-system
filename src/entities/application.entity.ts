@@ -1,5 +1,18 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from "typeorm";
 import { Seeker } from "./seeker.entity";
+
+export enum applicationStatus {
+  "AP" = "Application Pending",
+  "AA" = "Application Approved",
+  "AD" = "Application Declined",
+}
 
 @Entity()
 export class Application {
@@ -9,9 +22,19 @@ export class Application {
   @Column({ default: false })
   Admin_status: boolean;
 
-  @Column({ default: false })
-  Application_status: boolean;
+  @Column({
+    type: "enum",
+    enum: applicationStatus,
+    default: applicationStatus.AP,
+  })
+  Application_status: applicationStatus;
 
-  @ManyToOne(() => Seeker, (seeker) => seeker.application)
+  @CreateDateColumn()
+  createdDate: Date;
+
+  @UpdateDateColumn()
+  updatedDate: Date;
+
+  @ManyToOne(() => Seeker, (seeker) => seeker.applications)
   seeker: Seeker;
 }

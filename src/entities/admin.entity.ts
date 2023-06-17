@@ -18,7 +18,7 @@ export class Admin {
   id: string;
 
   @Column()
-  Full_Name: string;
+  full_name: string;
 
   @Column({ unique: true })
   @IsEmail({}, { message: "Please provide a valid email address." })

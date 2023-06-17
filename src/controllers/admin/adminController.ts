@@ -5,7 +5,7 @@ import {
   adminLoginSchema,
   adminLoginType,
   adminSignUpSchema,
-} from "../../validations/admin.validation";
+} from "../../validations/dataValidation";
 
 export const adminController = Router();
 
