@@ -20,6 +20,9 @@ export class Seeker {
   email: string;
 
   @Column()
+  password: string;
+
+  @Column()
   contact: string;
 
   @Column()
@@ -37,7 +40,7 @@ export class Seeker {
   @Column()
   about_me: string;
 
-  @Column({default:"not uploaded"})
+  @Column({ default: "not uploaded" })
   profile_photo: string;
 
   @Column()
@@ -52,4 +55,3 @@ export class Seeker {
   @OneToMany(() => Application, (application) => application.seeker)
   applications: Application[];
 }
-
