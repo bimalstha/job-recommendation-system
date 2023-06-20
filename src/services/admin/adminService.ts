@@ -34,7 +34,7 @@ export const loginAdmin = async (data: adminLoginType) => {
       },
     });
     if (!findAdmin) {
-      throw { msg: "user do not exits" };
+      throw { msg: "invalid credentials" };
     }
     const checkPassword = await verifyPassword(
       findAdmin.password,
@@ -43,7 +43,7 @@ export const loginAdmin = async (data: adminLoginType) => {
     if (!checkPassword) {
       throw { msg: "invalid credentials" };
     }
-    const token = jwt.sign({ id: findAdmin.id }, process.env.SECRETKEY_JWT, {
+    const token = jwt.sign({ id: findAdmin.id , role: findAdmin.role}, process.env.SECRETKEY_JWT, {
       expiresIn: "24h",
     });
     return token;

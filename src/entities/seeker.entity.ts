@@ -26,7 +26,7 @@ export class Seeker {
   contact: string;
 
   @Column()
-  address: string;
+  location: string;
 
   @Column()
   education_Level: string;

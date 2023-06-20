@@ -20,6 +20,9 @@ export class Employer {
   email: string;
 
   @Column()
+  password: string;
+
+  @Column()
   location: string;
 
   @Column()
@@ -27,6 +30,9 @@ export class Employer {
 
   @Column()
   description: string;
+
+  @Column({ default: "no photo" })
+  profile_photo: string;
 
   @CreateDateColumn()
   createdDate: Date;

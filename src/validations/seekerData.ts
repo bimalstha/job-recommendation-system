@@ -5,7 +5,7 @@ export const seekerSchema = z.object({
   email: z.string().email(),
   password: z.string().min(6, { message: "atleast use 6 characters" }),
   contact: z.string().min(10),
-  address: z.string(),
+  location: z.string(),
   education_Level: z.string(),
   expertise: z.string(),
   experience: z.string(),
