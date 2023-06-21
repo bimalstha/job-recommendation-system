@@ -3,7 +3,7 @@ import { Request, Response, Router } from "express";
 const jobApplicationController = Router();
 
 jobApplicationController.post(
-  "/apply_job/:id",
+  "/apply_job/:vacancy_id",
   async (req: Request, res: Response) => {
     try {
       const id = req.params.id;

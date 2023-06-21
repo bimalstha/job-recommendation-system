@@ -5,7 +5,7 @@ import {
   registerEmployer,
 } from "../../services/employer/employerService";
 
-const employerController = Router();
+export const employerController = Router();
 
 employerController.post(
   "/register",

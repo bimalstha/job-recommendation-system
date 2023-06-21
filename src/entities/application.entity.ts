@@ -20,7 +20,7 @@ export class Application {
   id: string;
 
   @Column({ default: false })
-  Admin_status: boolean;
+  admin_status: boolean;
 
   @Column({
     type: "enum",

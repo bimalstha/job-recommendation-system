@@ -6,7 +6,7 @@ import {
 } from "../../services/seeker/seekerService";
 import { hashPassword } from "../../utils/hashPassword";
 
-const seekerController = Router();
+export const seekerController = Router();
 
 seekerController.post(
   "/register-seeker",
