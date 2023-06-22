@@ -1,4 +1,4 @@
-import { AppDataSource } from "../../config/database";
+import AppDataSource  from "../../config/database";
 import Jwt from "jsonwebtoken";
 import { Seeker } from "../../entities/seeker.entity";
 import { verifyPassword } from "../../utils/hashPassword";

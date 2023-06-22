@@ -1,4 +1,4 @@
-
+const environment = process.env.NODE_ENV || 'production'
 export const config = {
   type: process.env.db_type ?? "postgres",
   host: process.env.db_host ?? "localhost",

@@ -1,4 +1,4 @@
-import { AppDataSource } from "../../config/database";
+import AppDataSource from "../../config/database";
 import { Employer } from "../../entities/employer.entity";
 import { verifyPassword } from "../../utils/hashPassword";
 import jwt from "jsonwebtoken";

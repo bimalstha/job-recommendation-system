@@ -20,7 +20,7 @@ export class Employer {
   email: string;
 
   @Column()
-  password: string;
+  Password: string;
 
   @Column()
   location: string;
