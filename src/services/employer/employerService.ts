@@ -2,8 +2,10 @@ import AppDataSource from "../../config/database";
 import { Employer } from "../../entities/employer.entity";
 import { verifyPassword } from "../../utils/hashPassword";
 import jwt from "jsonwebtoken";
+import { sendOtpMail } from "../multifactor/sendOtp";
+import { verifyOtp } from "../multifactor/verifyOtp";
 
-const employerRepository = AppDataSource.getRepository(Employer);
+export const employerRepository = AppDataSource.getRepository(Employer);
 
 export const registerEmployer = async (data) => {
   try {
@@ -25,7 +27,7 @@ export const registerEmployer = async (data) => {
 
 export const loginEmployer = async (data) => {
   try {
-    const findEmployer = employerRepository.find({
+    const findEmployer = await employerRepository.find({
       where: {
         email: data.email,
       },
@@ -34,16 +36,19 @@ export const loginEmployer = async (data) => {
       throw { msg: "invalid credentials" };
     }
     const verifypassword = await verifyPassword(
-      findEmployer[0].password,
+      findEmployer[0].Password,
       data.password
     );
     if (!verifyPassword) {
       throw { msg: "invalid credentials" };
     }
-    const token = jwt.sign(
-      { id: findEmployer[0].id },
-      process.env.SECRETKEY_JWT
-    );
+    await sendOtpMail(findEmployer[0].email);
+    let otp: string;
+    const token = await verifyOtp(findEmployer[0].email, otp);
+    // const token = jwt.sign(
+    //   { id: findEmployer[0].id },
+    //   process.env.SECRETKEY_JWT
+    // );
     return token;
   } catch (error) {
     console.log("the error from employer login service is", error);

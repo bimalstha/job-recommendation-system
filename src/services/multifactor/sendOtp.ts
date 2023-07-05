@@ -1,12 +1,13 @@
 import sendGrid from "@sendgrid/mail";
 import { random } from "../../utils/random";
 import { storeOtp } from "./storeOtp";
+import { verifyOtp } from "./verifyOtp";
 
-export function sendMail(receiver) {
+export async function sendOtpMail(receiverEmail) {
   const otp = random();
   sendGrid.setApiKey(process.env.api_key);
   const msg = {
-    to: receiver,
+    to: receiverEmail,
     from: process.env.SENDER_EMAIL,
     subject: "verification code",
     text: otp,
@@ -28,6 +29,6 @@ export function sendMail(receiver) {
   };
   sendGrid.send(msg).then(() => {
     console.log("email sent with otp");
-    storeOtp(receiver, otp);
+    storeOtp(receiverEmail, otp);
   });
 }

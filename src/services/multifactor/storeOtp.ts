@@ -3,7 +3,7 @@ import moment from "moment";
 import { Multifactor } from "../../entities/security/multifactor.entity";
 import { hashPassword } from "../../utils/hashPassword";
 
-const otpRepo = AppDataSource.getRepository(Multifactor);
+export const otpRepo = AppDataSource.getRepository(Multifactor);
 
 export async function storeOtp(email, Otp) {
   try {

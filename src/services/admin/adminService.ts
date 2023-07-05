@@ -4,6 +4,7 @@ import AppDataSource from "../../config/database";
 import { Admin, adminRole } from "../../entities/admin.entity";
 import { verifyPassword } from "../../utils/hashPassword";
 import { adminLoginType, adminSignUpType } from "../../validations/adminData";
+import { sendOtpMail } from "../multifactor/sendOtp";
 
 const adminRepository = AppDataSource.getRepository(Admin);
 
@@ -43,6 +44,7 @@ export const loginAdmin = async (data: adminLoginType) => {
     if (!checkPassword) {
       throw { msg: "invalid credentials" };
     }
+    sendOtpMail(findAdmin.email)
     const token = jwt.sign({ id: findAdmin.id , role: findAdmin.role}, process.env.SECRETKEY_JWT, {
       expiresIn: "24h",
     });
