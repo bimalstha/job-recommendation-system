@@ -42,13 +42,13 @@ export const loginEmployer = async (data) => {
     if (!verifyPassword) {
       throw { msg: "invalid credentials" };
     }
+    //sending otp to user for 2FA
     await sendOtpMail(findEmployer[0].email);
-    let otp: string;
-    const token = await verifyOtp(findEmployer[0].email, otp);
-    // const token = jwt.sign(
-    //   { id: findEmployer[0].id },
-    //   process.env.SECRETKEY_JWT
-    // );
+
+    const token = jwt.sign(
+      { id: findEmployer[0].id },
+      process.env.SECRETKEY_JWT
+    );
     return token;
   } catch (error) {
     console.log("the error from employer login service is", error);

@@ -5,7 +5,7 @@ import { otpRepo } from "./storeOtp";
 import { seekerRepository } from "../seeker/seekerService";
 import { employerRepository } from "../employer/employerService";
 
-export async function verifyOtp(receiverEmail, otpFrom_user) {
+export async function verifyOtp(receiverEmail, otpFrom_user,ipAddress) {
   try {
     const now = moment().toDate();
     const data = await otpRepo.find({

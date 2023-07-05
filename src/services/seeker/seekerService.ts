@@ -36,13 +36,11 @@ export const seekerLogin = async (data) => {
     }
 
     await sendOtpMail(findSeeker[0].email);
-    let otp: string;
-    const token = await verifyOtp(findSeeker[0].email, otp);
-    // const token = Jwt.sign(
-    //   { id: findSeeker[0].id },
-    //   process.env.SECRETKEY_JWT,
-    //   { expiresIn: "30d" }
-    // );
+    const token = Jwt.sign(
+      { id: findSeeker[0].id },
+      process.env.SECRETKEY_JWT,
+      { expiresIn: "30d" }
+    );
     return token;
   } catch (error) {
     console.log("the error while login in service is", error);

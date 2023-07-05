@@ -5,6 +5,7 @@ import {
   seekerLogin,
 } from "../../services/seeker/seekerService";
 import { hashPassword } from "../../utils/hashPassword";
+import { loginLogger } from "../../middlewares/security/loginLoggerMiddleware";
 
 export const seekerController = Router();
 
@@ -46,6 +47,7 @@ seekerController.post(
 
 seekerController.post(
   "/login",
+  loginLogger,
   async (req: Request, res: Response): Promise<Response> => {
     try {
       const { email, password } = req.body;

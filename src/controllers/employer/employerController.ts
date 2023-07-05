@@ -4,6 +4,7 @@ import {
   loginEmployer,
   registerEmployer,
 } from "../../services/employer/employerService";
+import { loginLogger } from "../../middlewares/security/loginLoggerMiddleware";
 
 export const employerController = Router();
 
@@ -32,14 +33,15 @@ employerController.post(
 
 employerController.post(
   "/login",
+  loginLogger,
   async (req: Request, res: Response): Promise<Response> => {
     try {
       const { email, password } = req.body;
       const employerLoginData = { email, password };
-      const loginemployer = await loginEmployer(employerLoginData);
+      const loginToken = await loginEmployer(employerLoginData);
       return res
         .status(200)
-        .send({ token: loginemployer, msg: "login successful" });
+        .send({ token: loginToken, msg: "login successful" });
     } catch (error) {
       console.log("the error in employer login controller is", error);
     }

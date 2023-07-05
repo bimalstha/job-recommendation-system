@@ -1,7 +1,6 @@
 import sendGrid from "@sendgrid/mail";
 import { random } from "../../utils/random";
 import { storeOtp } from "./storeOtp";
-import { verifyOtp } from "./verifyOtp";
 
 export async function sendOtpMail(receiverEmail) {
   const otp = random();
@@ -27,8 +26,14 @@ export async function sendOtpMail(receiverEmail) {
    </div>
    </div>`,
   };
-  sendGrid.send(msg).then(() => {
-    console.log("email sent with otp");
-    storeOtp(receiverEmail, otp);
-  });
+  sendGrid
+    .send(msg)
+    .then(() => {
+      console.log("email sent with otp");
+      storeOtp(receiverEmail, otp);
+      return;
+    })
+    .catch((error) => {
+      return error.message;
+    });
 }

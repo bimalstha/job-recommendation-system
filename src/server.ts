@@ -10,6 +10,7 @@ server.use(router);
 
 server.get("/", (req: Request, res: Response) => {
   try {
+    const ipp = req.socket.remoteAddress
     const ip = req.headers["user-agent"];
     res.send(`<h1>connected from ip ${ip}</h1>`);
   } catch (error) {

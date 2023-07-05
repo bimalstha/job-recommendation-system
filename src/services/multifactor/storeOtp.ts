@@ -15,6 +15,7 @@ export async function storeOtp(email, Otp) {
       expiresAt: expiration_time,
     });
     await otpRepo.save(otp);
+    return 
   } catch (error) {
     console.log("the error from store opt is", error);
   }
