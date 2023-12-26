@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 import { router } from "./routes";
 
 const server = express();
-dotenv.config({ path: __dirname + `/../../.env.${process.env.NODE_ENV}` });
+dotenv.config({ path:`./.env.${process.env.NODE_ENV}` });
 
 server.use(express.json());
 server.use(router);

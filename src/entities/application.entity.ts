@@ -17,7 +17,7 @@ export enum applicationStatus {
 @Entity()
 export class Application {
   @PrimaryGeneratedColumn("uuid")
-  id: string;
+  idss: string;
 
   @Column({ default: false })
   admin_status: boolean;

@@ -24,11 +24,10 @@ vacancyController.post(
 );
 
 vacancyController.get(
-  "/search/:findJob",
+  "/search/:findRelatedJobByTitle",
   async (req: Request, res: Response): Promise<Response> => {
     try {
-      const findJob = req.params.findJob;
-      const resultJob = await jobFinder(findJob);
+      const resultJob = await jobFinder(req.params.findRelatedJobByTitle as string)
       return res.send(resultJob);
     } catch (error) {
       console.log("the error from the findjob is ", error);
