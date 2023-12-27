@@ -7,7 +7,7 @@ const AppDataSource = new DataSource({
   host: config.host,
   username: config.username,
   password: config.password,
-  port: config.port,
+  port: config.port || 5432,
   database: config.database,
   synchronize: false,
   logging: false,
@@ -22,7 +22,7 @@ export const DbConnect = (): void => {
       console.log("Database connected");
     })
     .catch((error) => {
-      throw error;
+      console.log(error)
     });
 };
 

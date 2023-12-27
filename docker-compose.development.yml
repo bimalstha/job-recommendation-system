@@ -9,7 +9,7 @@ services:
 
         ports: 
             - '3000:3000'
-        image: app
+        image: dev_app
         depends_on:
             - db
 

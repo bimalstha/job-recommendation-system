@@ -9,7 +9,7 @@ services:
 
         ports: 
             - '3000:3000'
-        image: app
+        image: prod_app
         depends_on:
             - db
 
@@ -21,7 +21,7 @@ services:
             POSTGRES_PASSWORD: pass
             POSTGRES_DB: jrs
         ports:
-            - '5432:5432'
+            - 5432:5432
         volumes:
             - db:/var/lib/postgresql/data
 
