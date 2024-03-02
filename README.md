@@ -1,5 +1,5 @@
 # job-recommendation-system
-A simple job recommendation system using using Cosine Similarity
+A simple job recommendation system using Cosine Similarity
 Algorithm. 
 Every organization, whether big or small, has challenges to overcome and manage the
 information of job, vacancy, job candidate, interview schedule. Through this system,
