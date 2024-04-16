@@ -9,6 +9,7 @@ import {
 import { Seeker } from "./seeker.entity";
 
 export enum applicationStatus {
+  "NA" = "Not Applied",
   "AP" = "Application Pending",
   "AA" = "Application Approved",
   "AD" = "Application Declined",
@@ -17,7 +18,7 @@ export enum applicationStatus {
 @Entity()
 export class Application {
   @PrimaryGeneratedColumn("uuid")
-  idss: string;
+  id: string;
 
   @Column({ default: false })
   admin_status: boolean;
@@ -25,7 +26,7 @@ export class Application {
   @Column({
     type: "enum",
     enum: applicationStatus,
-    default: applicationStatus.AP,
+    default: applicationStatus.NA,
   })
   Application_status: applicationStatus;
 

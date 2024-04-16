@@ -14,8 +14,8 @@ export enum adminRole {
 
 @Entity()
 export class Admin {
-  @PrimaryGeneratedColumn("uuid")
   id: string;
+  @PrimaryGeneratedColumn("uuid")
 
   @Column({ nullable: true })
   full_name: string;

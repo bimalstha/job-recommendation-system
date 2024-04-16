@@ -14,7 +14,6 @@ export const adminLoginSchema = z.object({
   password: z.string().min(6, { message: "must be atleast 6 characters" }),
 });
 
-
 type adminSignUpType = z.infer<typeof adminSignUpSchema>;
 type adminLoginType = z.infer<typeof adminLoginSchema>;
 

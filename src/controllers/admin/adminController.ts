@@ -20,6 +20,7 @@ adminController.post("/register", async (req: Request, res: Response) => {
     return res.send({ msg: register });
   } catch (error) {
     console.log("the error from registering admin is", error);
+    throw error;
   }
 });
 
@@ -35,5 +36,6 @@ adminController.post("/login-as-admin", async (req: Request, res: Response) => {
     res.send({ token: token, msg: "login successful" });
   } catch (error) {
     console.log("the error from admin login is", error);
+    throw error;
   }
 });

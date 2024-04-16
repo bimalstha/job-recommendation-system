@@ -3,7 +3,7 @@ import AppDataSource from "../../config/database";
 import { Vacancy } from "../../entities/vacancy.entity";
 import { vacancyDataType } from "../../validations/vacancyData";
 
-const vacancyRepository = AppDataSource.getRepository(Vacancy);
+ export const vacancyRepository = AppDataSource.getRepository(Vacancy);
 
 export const postVacancy = async (data: vacancyDataType) => {
   try {
@@ -12,6 +12,7 @@ export const postVacancy = async (data: vacancyDataType) => {
     return { msg: "vacancy posted" };
   } catch (error) {
     console.log("the error from post vacancy service is", error);
+    throw error
   }
 };
 
@@ -27,7 +28,11 @@ export const jobFinder = async (data: string) => {
     return findJobData;
   } catch (error) {
     console.log("the error from the jobfinder service is ", error);
+    throw error
   }
 };
+
+
+
 
 export default { postVacancy };
