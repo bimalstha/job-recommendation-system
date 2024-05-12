@@ -27,7 +27,6 @@ export async function loginLogger(
     }
     next();
   } catch (error) {
-    console.log("the error from the login logger middleware is", error);
   }
 }
 

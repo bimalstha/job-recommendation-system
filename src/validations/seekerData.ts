@@ -4,14 +4,14 @@ export const seekerSchema = z.object({
   full_name: z.string(),
   email: z.string().email(),
   password: z.string().min(6, { message: "atleast use 6 characters" }),
-  contact: z.string().min(10),
+  contact: z.string().min(4),
   location: z.string(),
   education_Level: z.string(),
   expertise: z.string(),
-  experience: z.string(),
+  experience: z.number(),
   about_me: z.string(),
   profile_photo: z.string().optional(),
-  C_V: z.string(),
+  C_V: z.string().optional(),
 });
 
 export const seekerLoginSchema = z.object({

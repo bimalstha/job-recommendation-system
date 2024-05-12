@@ -9,7 +9,7 @@ import {
 
 export const adminController = Router();
 
-adminController.post("/register", async (req: Request, res: Response) => {
+adminController.post("/register-admin", async (req: Request, res: Response) => {
   try {
     let { Full_Name, email, password } = req.body;
     adminSignUpSchema.parse(req.body);

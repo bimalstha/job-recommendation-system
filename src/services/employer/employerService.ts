@@ -4,6 +4,8 @@ import { verifyPassword } from "../../utils/hashPassword";
 import jwt from "jsonwebtoken";
 import { sendOtpMail } from "../multifactor/sendOtp";
 import { verifyOtp } from "../multifactor/verifyOtp";
+import { uuidType } from "../../validations/uuid/uuid.validation";
+import { employerDataType } from "../../validations/employerData";
 
 export const employerRepository = AppDataSource.getRepository(Employer);
 
@@ -36,10 +38,10 @@ export const loginEmployer = async (data) => {
       throw { msg: "invalid credentials" };
     }
     const verifypassword = await verifyPassword(
-      findEmployer[0].Password,
+      findEmployer[0]["Password"],
       data.password
     );
-    if (!verifyPassword) {
+    if (!verifypassword) {
       throw { msg: "invalid credentials" };
     }
     //sending otp to user for 2FA
@@ -54,3 +56,5 @@ export const loginEmployer = async (data) => {
     console.log("the error from employer login service is", error);
   }
 };
+
+

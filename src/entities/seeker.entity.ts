@@ -43,7 +43,7 @@ export class Seeker {
   @Column({ default: "not uploaded" })
   profile_photo: string;
 
-  @Column()
+  @Column({nullable: true})
   C_V: string;
 
   @CreateDateColumn()

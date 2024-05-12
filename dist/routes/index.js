@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.router = void 0;
+var express_1 = require("express");
+var adminController_1 = require("../controllers/admin/adminController");
+var employerController_1 = require("../controllers/employer/employerController");
+var seekerController_1 = require("../controllers/seeker/seekerController");
+var vacancyController_1 = require("../controllers/jobVacancy/vacancyController");
+exports.router = (0, express_1.Router)();
+exports.router.use("/", adminController_1.adminController);
+exports.router.use("/", employerController_1.employerController);
+exports.router.use("/", seekerController_1.seekerController);
+exports.router.use("/", vacancyController_1.vacancyController);

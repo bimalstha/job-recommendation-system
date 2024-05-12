@@ -9,7 +9,7 @@ const AppDataSource = new DataSource({
   password: config.password,
   port: config.port || 5432,
   database: config.database,
-  synchronize: false,
+  synchronize: true,
   logging: false,
   entities: ["src/entities/**/*.ts"],
   subscribers: [],
